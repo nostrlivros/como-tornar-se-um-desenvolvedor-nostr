@@ -1,0 +1,17 @@
+=== Diferenças com outras plataformas descentralizadas
+
+O Nostr se destaca por sua simplicidade e foco direto na comunicação descentralizada. Enquanto outras iniciativas buscam descentralização por meio de soluções complexas, muitas vezes ligadas a blockchains ou sistemas de governança elaborados, o Nostr segue um caminho mais minimalista e eficiente.
+
+Uma das principais diferenças do Nostr é que ele **não precisa de blockchain para funcionar**. Embora muitos projetos descentralizados estejam vinculados a uma rede blockchain para validar identidades ou registrar interações, o Nostr se baseia apenas em **criptografia de chave pública e relays simples**. Essa abordagem o torna leve, rápido e fácil de implementar.
+
+Ao invés de depender de consenso global ou de mineração, como acontece no Bitcoin, o Nostr adota um modelo em que **qualquer evento é válido se for corretamente assinado** por uma chave privada. Os relays simplesmente armazenam e retransmitem os eventos — eles não decidem o que é verdadeiro ou falso, apenas oferecem infraestrutura para a comunicação.
+
+A identidade do usuário é sua chave pública, assim como no Bitcoin, onde uma chave pública representa um endereço. Essa chave é usada para assinar eventos, o que garante autenticidade sem depender de intermediários. Se um usuário tem a chave privada, ele tem controle total sobre sua conta — exatamente como o princípio "seu Bitcoin, suas chaves".
+
+Além disso, o Nostr é modular por natureza. Qualquer um pode criar um cliente, um relay, ou até uma nova proposta de funcionalidade (NIP), sem pedir permissão a ninguém. Isso estimula um ecossistema altamente experimental e resiliente, onde inovações podem surgir de qualquer parte do mundo, sem barreiras técnicas ou políticas.
+
+Enquanto redes tradicionais centralizadas impõem regras e algoritmos de visibilidade, o Nostr permite que cada cliente implemente a interface e a lógica de interação que desejar. O poder é transferido para as pontas — os usuários e os desenvolvedores — em vez de estar concentrado em corporações.
+
+Essa liberdade vem com um desafio: a descentralização exige mais responsabilidade do indivíduo. Não há "esqueci minha senha", não há "denunciar e esperar moderação central". O usuário precisa cuidar de suas chaves e escolher os relays e clientes com os quais interage. Mas é justamente essa responsabilidade que garante a soberania digital que o Nostr propõe.
+
+<<<

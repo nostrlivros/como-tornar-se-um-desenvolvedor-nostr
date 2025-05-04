@@ -1,0 +1,15 @@
+=== A filosofia por trás do Nostr
+
+A filosofia do Nostr é profundamente enraizada em princípios de liberdade individual, resistência à censura e descentralização real. Em vez de tentar "melhorar" o modelo de redes sociais tradicionais, o Nostr parte do zero, com uma proposta simples: permitir que qualquer pessoa publique e consuma informações sem depender de intermediários confiáveis.
+
+No coração do protocolo está a ideia de que **qualquer um deve poder se expressar**, sem medo de ser silenciado por plataformas centralizadas, governos ou corporações. O Nostr não tenta julgar ou moderar o conteúdo — ele apenas fornece o meio técnico para que mensagens sejam transmitidas entre pares. Cabe aos clientes e aos usuários decidirem o que querem ver, filtrar ou compartilhar.
+
+Essa neutralidade técnica é um diferencial. O protocolo não tem "curadoria" embutida. Ele não tenta resolver disputas sociais, políticas ou culturais — ele apenas oferece a infraestrutura para que essas discussões possam existir livremente. Isso se alinha à ética cypherpunk e aos ideais que também influenciaram a criação do Bitcoin: **liberdade através da criptografia, e confiança minimizada em terceiros.**
+
+Outro aspecto central da filosofia do Nostr é o **empoderamento do desenvolvedor**. Com uma base técnica acessível e bem documentada, qualquer pessoa pode criar um cliente, um relay ou uma nova ferramenta sem precisar integrar-se a uma rede complexa ou obter permissão. Isso gera um ambiente altamente criativo, onde soluções experimentais florescem e a inovação acontece nas bordas, e não no centro.
+
+A confiança no indivíduo também se reflete na forma como o Nostr lida com identidade e controle. Sua chave privada é sua identidade. Não há recuperação de conta via e-mail. Não há login com redes sociais. Você é soberano — e, portanto, responsável — por sua presença e atividade na rede.
+
+Em resumo, o Nostr não é apenas um protocolo técnico: é uma declaração de valores. Ele representa uma visão da internet onde os usuários não são produtos, onde os desenvolvedores não precisam de autorização para inovar, e onde a liberdade de expressão é uma característica do sistema, não uma exceção sujeita a aprovação.
+
+<<<

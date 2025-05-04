@@ -1,0 +1,15 @@
+=== História e conceito
+
+O Nostr (Notes and Other Stuff Transmitted by Relays) é um protocolo aberto e simples para comunicação descentralizada. Diferente de redes sociais tradicionais como Twitter, Facebook ou até mesmo plataformas descentralizadas mais complexas como Mastodon, o Nostr não depende de servidores centrais, nem de consenso entre nós — sua filosofia é radicalmente minimalista: tudo gira em torno de mensagens assinadas e retransmitidas.
+
+A ideia por trás do Nostr surgiu como uma reação a problemas recorrentes em plataformas de comunicação: censura, banimentos arbitrários, controle centralizado, dependência de infraestrutura fechada, e dificuldade de portabilidade de identidade. O criador do protocolo, que assina como fiatjaf, buscava uma alternativa que fosse não apenas resistente à censura, mas também simples o bastante para que qualquer pessoa pudesse entender, implementar ou adaptar.
+
+O protocolo começou a ganhar atenção em 2021, mas foi em 2022 e 2023 que o ecossistema realmente se expandiu. Com o apoio de desenvolvedores entusiastas e figuras públicas como Jack Dorsey, ex-CEO do Twitter, que doou recursos e promoveu o Nostr, surgiram diversos clientes e relays, além de propostas de extensão conhecidas como NIPs (Nostr Implementation Possibilities). Esses documentos definem padrões opcionais e ajudam a coordenar inovações dentro da rede.
+
+O Nostr não é uma plataforma, mas uma base para criar qualquer tipo de aplicação social: redes sociais, chats privados, marketplaces, blogs, fóruns, etc. Sua estrutura é propositalmente simples: usuários criam eventos, assinam com suas chaves privadas, e enviam para relays que retransmitem para outros usuários interessados. Não há intermediários obrigatórios nem algoritmos ocultos.
+
+A descentralização do Nostr não é uma promessa futura — ela já está presente desde a concepção do protocolo. A identidade de cada usuário é apenas sua chave pública, e sua soberania sobre seus dados é garantida pela posse da chave privada. Se um relay o censura, basta publicar em outro. Se um cliente deixa de funcionar, basta usar outro. É um protocolo que aposta na diversidade e na liberdade como elementos centrais da infraestrutura.
+
+Assim, o Nostr representa uma ruptura com o modelo tradicional da internet social. Ele não depende de confiança em terceiros. Ele não força consenso. Ele apenas transmite notas e outras coisas — de forma aberta, resistente e direta.
+
+<<<
