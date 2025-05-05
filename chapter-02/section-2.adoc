@@ -1,0 +1,50 @@
+=== O que você precisa saber antes de começar
+
+Antes de mergulhar no código, é importante entender alguns conceitos fundamentais do Nostr que influenciam diretamente a forma como você vai projetar suas aplicações. O protocolo é simples, mas essa simplicidade esconde uma mudança profunda de paradigma em relação ao desenvolvimento tradicional para a web.
+
+==== Identidade = Chave Pública
+
+No Nostr, não existe e-mail, login ou senha. A identidade de um usuário é sua **chave pública**, e ele assina todas as suas ações com uma **chave privada**. Isso significa que:
+
+- Não há recuperação de conta tradicional.
+- Se você perde sua chave privada, perde o acesso à identidade.
+- Se alguém obtém sua chave privada, assume completamente o seu perfil.
+
+Essa estrutura é semelhante ao que acontece com carteiras de Bitcoin. É fundamental adotar práticas seguras desde o início, como armazenar suas chaves privadas de forma segura, usar hardware wallets, apps como _Amber_ ou extensões como _nos2x_, _Nostrame_ e _Alby_, e evitar jamais expor a chave privada em código ou navegadores.
+
+==== Tudo é um Evento
+
+No Nostr, tudo que acontece é modelado como um **evento JSON** assinado. Não há banco de dados relacional, nem APIs REST. Você cria um objeto JSON com campos como `kind`, `content`, `tags`, `created_at`, etc., assina esse objeto com sua chave privada, e envia para um ou mais relays via WebSocket.
+
+Essa estrutura exige que você pense em termos de *eventos imutáveis*. Não há "editar um post" da maneira convencional — você publica um novo evento que substitui o anterior, ou marca o anterior como "apagado" (com um novo evento do tipo delete).
+
+==== A Infraestrutura é Voluntária
+
+Diferente de um sistema com back-end centralizado, onde seu servidor define o que está disponível, no Nostr os relays são voluntários e independentes. Isso significa que:
+
+- Nem todos os relays guardarão seus eventos.
+- Você pode publicar para múltiplos relays ao mesmo tempo.
+- Os clientes decidem de quais relays querem ler, definidos pelo usuário ou padrão do cliente..
+
+É importante projetar seu cliente para funcionar com redundância: publique em mais de um relay, leia de vários, e trate casos de ausência de resposta e excesso de dados. Isso ajuda a garantir a resiliência e a disponibilidade do seu aplicativo Nostr, mesmo que algumas relays estejam indisponíveis ou com problemas, ou que você receba um volume de dados maior do que o esperado.
+
+==== Não há "API oficial"
+
+Não há um servidor central com um endpoint `/api/posts` ou `/login`. Tudo é feito por meio de **conexões WebSocket** diretas com os relays, usando uma estrutura de mensagens muito simples:
+
+- `REQ`: solicita eventos.
+- `EVENT`: envia um evento.
+- `NOTICE`, `EOSE`, `CLOSED`: mensagens de controle da conexão.
+
+Você deve estar confortável com WebSockets e programação assíncrona para interagir eficientemente com o protocolo.
+
+==== O ecossistema está em constante evolução
+
+O Nostr é jovem e altamente dinâmico. Novos NIPs (propostas de implementação) surgem com frequência, e alguns se tornam rapidamente adotados por toda a comunidade. É importante acompanhar os repositórios e canais de discussão, como:
+
+- https://github.com/nostr-protocol/nips
+- Grupos no Nostr, Telegram, e outros canais
+
+Estar por dentro do que está em desenvolvimento ajuda a tomar decisões técnicas mais sustentáveis.
+
+<<<

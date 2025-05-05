@@ -1,0 +1,5 @@
+== 2. Preparando-se para o Desenvolvimento
+
+include::section-1.adoc[]
+include::section-2.adoc[]
+include::section-3.adoc[]

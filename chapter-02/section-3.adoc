@@ -1,0 +1,70 @@
+=== Escolhendo seu primeiro projeto com Nostr
+
+Se você está começando agora no desenvolvimento com o protocolo Nostr, a melhor forma de aprender é construindo algo real. Mas, para evitar frustrações iniciais, é importante escolher um projeto com escopo bem definido, que te permita entender os fundamentos enquanto se diverte no processo.
+
+Abaixo estão algumas sugestões de projetos ideais para iniciantes — cada um abordando diferentes aspectos do protocolo:
+
+==== Cliente Leitor de Eventos Públicos
+
+*Objetivo:* Criar uma aplicação web ou de linha de comando que se conecte a um ou mais relays e exiba eventos do tipo `kind: 1` (posts simples).
+
+*Você vai aprender a:*
+
+- Estabelecer conexões WebSocket com um ou mais relays.
+- Enviar mensagens `REQ` para buscar eventos.
+- Ler e interpretar o conteúdo dos eventos.
+- Renderizar conteúdo filtrado (por autor, palavras-chave ou data).
+
+*Tecnologias recomendadas:* JavaScript/TypeScript com HTML básico. Frameworks como React ou Vue (opcional).
+
+==== Gerador de Identidade Nostr
+
+*Objetivo:* Criar uma ferramenta simples que gere pares de chave pública/privada e mostre o perfil correspondente.
+
+*Você vai aprender a:*
+
+- Trabalhar com bibliotecas como `nostr-tools`.
+- Entender o formato das chaves no Nostr.
+- Armazenar chaves de forma segura (pelo menos localmente).
+
+**Importante**: Nunca exponha chaves privadas sem saber dos riscos.
+
+==== Bot de Anúncios Automáticos
+
+*Objetivo:* Criar um bot que publique eventos em intervalos regulares com mensagens automáticas (ex: citações, status, anúncios).
+
+*Você vai aprender a:*
+
+- Assinar e publicar eventos.
+- Programar tarefas recorrentes.
+- Lidar com erros de publicação e falhas de conexão.
+
+*Pode ser feito com:* Node.js, Python ou Go.
+
+==== Relay Privado Local
+
+*Objetivo:* Rodar seu próprio relay em sua máquina para testes e aprendizado.
+
+*Você vai aprender a:*
+
+- Instalar e configurar um relay (como `nostr-rs-relay`).
+- Ver como os eventos são armazenados e servidos.
+- Entender como funciona a persistência, moderação e filtragem.
+
+Esse tipo de projeto te dá visão de “nos bastidores” e é útil mesmo que seu foco principal seja no front-end.
+
+==== Perfil Público com NIP-05
+
+*Objetivo:* Criar um site estático que ofereça um endpoint `.well-known/nostr.json` para mapear sua chave pública para um nome legível como `@seunome@seudominio.com`.
+
+*Você vai aprender a:*
+
+- Usar o NIP-05 para validação de identidade.
+- Configurar um domínio e servidor web básico ou hospedar o site no github pages.
+- Entender a interoperabilidade entre identidades e clientes.
+
+==== Dica Final
+
+Comece pequeno e pense iterativamente. O protocolo Nostr valoriza a simplicidade — você não precisa de um sistema complexo com autenticação, back-end e banco de dados para lançar seu primeiro experimento. Com apenas uma chave, um JSON assinado e uma conexão WebSocket, você já pode fazer parte da rede global.
+
+<<<

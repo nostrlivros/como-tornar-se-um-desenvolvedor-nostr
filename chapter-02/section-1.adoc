@@ -1,0 +1,104 @@
+=== Ferramentas e ambientes de desenvolvimento
+
+Você pode desenvolver aplicações Nostr com praticamente qualquer linguagem de programação. Como o protocolo utiliza WebSockets para comunicação e mensagens no formato JSON, a integração é simples e acessível, permitindo desde pequenos scripts e até aplicações robustas.
+
+A seguir, apresento uma visão geral das ferramentas e linguagens mais comuns utilizadas pela comunidade Nostr atualmente.
+
+==== Linguagens e bibliotecas
+
+Você pode usar qualquer linguagem que ofereça suporte a WebSockets e JSON, criar suas próprias bibliotecas e SDKs, ou aproveitar as opções já disponíveis para facilitar o desenvolvimento:
+
+- **JavaScript/TypeScript**: Ideal para clientes web e extensões de navegador. As principais bibliotecas são `nostr-tools`, e a `ndk`. Com elas, você consegue gerar chaves, assinar eventos, conectar-se a relays e muito mais.
+- **Python**: Existem implementações como `python-nostr`, ótimas para scripts, bots, automações ou aplicações no lado do servidor.
+- **Go**: A linguagem tem ganhado tração por sua performance e simplicidade. A biblioteca `go-nostr` é bastante completa, é usado em relays e ferramentas de comando de linha (CLI).
+- **Rust**: A biblioteca `rust-nostr` é a principal opção na linguagem, ideal para projetos que buscam performance e segurança, especialmente ao desenvolver relays.
+- **Dart/Flutter**: Já existem clientes móveis sendo desenvolvidos com Flutter, e a comunidade adaptou bibliotecas como `Dart NDK` e `dart-nostr` para facilitar a integração com o ecossistema.
+
+==== Gerenciador de Dependências
+
+Assim como o `apt` no Linux ou o recurso de adicionar/remover programas no Windows, cada linguagem costuma ter seu próprio gerenciador de dependências, que facilita a instalação, atualização e remoção de bibliotecas usadas no projeto. 
+
+Aqui estão alguns exemplos comuns:
+
+- **npm ou yarn**: Gerenciadores de pacotes para projetos JavaScript/TypeScript (Node.js e web).
+- **pip**: Usado em projetos Python para instalar e gerenciar bibliotecas.
+- **cargo**: Ferramenta oficial do Rust para compilar, testar e gerenciar dependências.
+- **go mod**: Sistema de módulos do Go para controle de versões e pacotes.
+- **pub**: Gerenciador de pacotes oficial para projetos Dart e Flutter.
+
+
+==== Relays
+
+Para testar e publicar eventos, você pode se conectar a relays públicos ou rodar o seu próprio.
+
+Alguns relays públicos populares incluem:
+
+- `wss://relay.damus.io`
+- `wss://nos.lol`
+- `wss://nostr.wine`
+- `wss://relay.nostr.band`
+
+Rodar um relay local é útil para testes, especialmente se você quiser entender o que acontece nos bastidores.
+
+Exemplos de software de relay:
+
+- **nostream**: Um relay Nostr escrito em TypeScript e utiliza o banco de dados PostgreSQL.
+- **nostr-rs-relay**: Um relay minimalista escrito em Rust que armazena dados usando SQLite.
+- **go-nostr-relay**: Relay escrito em Go baseado na biblioteca relayer com suporte a SQLite3, PostgreSQL e MySQL.
+
+==== Signers e gerenciadores
+
+Como a identidade no Nostr é construída a partir de chaves criptográficas, é essencial utilizar ferramentas para gerá-las, gerenciá-las e usá-las na assinatura de eventos.
+
+Algumas opções:
+
+- **Extensões para Navegador**: Como _nos2x_, _Nostrame_ e _Alby_ permitem gerenciar identidades e assinar eventos diretamente no navegador.
+- **Aplicativos móveis**: O _Amber_ é um assinador de eventos Nostr que mantém a chave privada isolada em um app dedicado. Já o _Nowser_ permite gerenciar e assinar chaves Nostr com segurança, oferecendo suporte a múltiplos métodos de autenticação.
+- **Aplicaticos para Web**: O _Nsec App_ é um gerenciador de identidades Nostr simples e seguro, focado em gerar, importar e usar chaves para assinar eventos diretamente no navegador.
+- **Linha de comando ou bibliotecas**: Você pode gerar e usar chaves com ferramentas de CLI como `nak` ou até mesmo usando `openssl`, além de bibliotecas como `nostr-tools` e `go-nostr`.
+
+==== Ferramentas Úteis
+
+Aqui estão algumas ferramentas que podem facilitar o desenvolvimento e os testes com Nostr, seja para interagir com relays, assinar e enviar eventos, ou até integrar pagamentos via Lightning.
+
+- **Postman ou Insomnia**: Para testar conexões WebSocket e enviar eventos manualmente.
+- **Wallets Lightning (opcional)**: Caso deseje testar pagamentos lightning via Nostr (zaps), você pode usar carteiras como Phoenix, Breez ou Wallet of Satoshi.
+
+==== Versionamento de Código
+
+Controlar o histórico do seu código é essencial para qualquer projeto. Utilize o **Git** para rastrear mudanças e colaborar com outras pessoas. Sempre que possível, hospede seu repositório em plataformas como o **GitHub** ou em alternativas mais descentralizadas, como o **Codeberg**.
+
+==== Editores e ambiente local
+
+Para começar rápido:
+
+- Um editor de texto moderno como **VS Code**, **NeoVim** ou **Zed**.
+- Uma linguagem de servidor instalada localmente com suporte a WebSockets (Node.js, Python, Go, etc.).
+- Um navegador moderno que permita conexão com WebSocket `wss://`.
+
+A vantagem do Nostr é que você pode criar aplicações completas com um simples HTML + JavaScript, sem necessidade de um servidor.
+
+==== Clientes e interfaces de referência
+
+Você pode estudar o funcionamento do protocolo observando como os principais clientes se comportam:
+
+- **noStrudel** (web)
+- **Iris.to** (web)
+- **Snort.social** (web)
+- **Coracle.social** (web)
+- **Damus** (iOS/macOS)
+- **Amethyst** (Android)
+- **Amethys** (Android)
+- **Nostr Console** (CLI)
+
+A maioria desses projetos é open-source, e você pode ler o código, clonar e testar localmente.
+
+==== Testando com redes reais
+
+//Você não precisa de ambiente de testes separado como em blockchains. Tudo que você faz no Nostr já é real — por isso, crie identidades de teste, conecte a um relays seja próprio ou público e tenha cuidado com a exposição de dados.
+
+No Nostr, não é necessário um ambiente de testes separado, como em blockchains. Tudo o que você faz é real. Por isso, crie identidades de teste, conecte-se a um relay, seja ele próprio ou público, e comece a publicar notas. No entanto, é importante ter cuidado para não expor dados privados inadvertidamente.
+
+Com essas ferramentas em mãos, você já pode começar a criar seu primeiro projeto.
+
+<<<
