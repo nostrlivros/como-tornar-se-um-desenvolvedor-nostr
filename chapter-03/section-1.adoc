@@ -1,0 +1,42 @@
+=== Relays, chaves públicas e privadas
+
+Para compreender como o Nostr funciona de verdade, é essencial entender seus componentes fundamentais. A arquitetura do protocolo é deliberadamente simples, mas poderosa. Ela é composta por apenas três elementos essenciais:
+
+1. *Usuários*, que criam e assinam eventos com chaves criptográficas.
+2. *Relays*, que armazenam e retransmitem os eventos.
+3. *Eventos*, que são a unidade de informação no Nostr.
+
+Vamos focar, neste capítulo, em dois pilares centrais: os *relays* e o *sistema de chaves públicas e privadas*.
+
+==== Relays
+
+Os relays são servidores simples que se comunicam via WebSocket. Eles não processam lógica complexa — seu único trabalho é receber eventos assinados dos usuários, armazená-los (opcionalmente) e retransmiti-los para outros usuários conectados que fizerem uma requisição compatível.
+
+Cada relay é independente: ele escolhe o que aceita, o que armazena, por quanto tempo, e para quem envia. Não há uma cadeia de confiança, nem um mecanismo de consenso entre os relays. Um usuário pode se conectar a quantos relays quiser, e pode publicar em todos eles simultaneamente.
+
+Essa arquitetura distribui o poder: se um relay aplicar censura, basta publicar em outro. Se um relay sair do ar, os eventos ainda estão disponíveis em outros. Isso garante resiliência e resistência à censura.
+
+==== Chaves públicas e privadas
+
+Toda identidade no Nostr é representada por um par de chaves:
+
+- *Chave pública* (`npub...`): usada para identificar o usuário. É como o seu “nome” dentro da rede.
+- *Chave privada* (`nsec...`): usada para assinar eventos e provar autoria. Deve ser mantida em segredo absoluto.
+
+Essa arquitetura criptográfica tem raízes nos mesmos princípios utilizados no Bitcoin: a chave privada garante soberania, autenticidade e controle direto sobre a identidade.
+
+Não há servidores de autenticação, senhas ou cookies. Ao assinar um evento com sua chave privada, você está afirmando: “isso foi escrito por mim”. Os relays, por sua vez, podem validar a assinatura com sua chave pública — e saber que é válida sem precisar confiar em ninguém.
+
+Essa abordagem tem diversas implicações:
+
+- *Autonomia total*: ninguém pode te banir de "existir" no Nostr.
+- *Portabilidade de identidade*: você pode usar sua chave em qualquer cliente.
+- *Risco de perda total*: se perder sua chave privada, não há recuperação.
+
+Por isso, desde o início, é importante adotar práticas de segurança robustas: guardar backup de suas chaves privadas com criptografia, usar carteiras Nostr seguras como _nos2x_, _Nostrame_, _Amber_ e _Alby_, ou até soluções como hardware wallets em aplicativos mais sensíveis.
+
+Essa arquitetura minimalista — usuários com chaves e relays simples — torna o Nostr extremamente flexível. A partir disso, é possível construir redes sociais, chats, fóruns, sistemas de reputação, mensageria privada e muito mais, tudo em cima dos mesmos princípios.
+
+Na próxima seção, veremos como os eventos são estruturados e como tudo isso ganha vida em um fluxo contínuo de mensagens assíncronas.
+
+<<<

@@ -1,0 +1,86 @@
+=== Eventos e estrutura de Mensagens
+
+==== O que são eventos?
+
+No Nostr, toda ação do usuário — postar uma nota, enviar uma mensagem, atualizar seu perfil, reagir a algo — é representada por um *evento*. Um evento é uma estrutura de dados assinada com a chave privada do usuário, e é a menor unidade de comunicação no protocolo.
+
+Eventos são imutáveis: uma vez publicados, não podem ser modificados. Se algo precisar ser alterado, um novo evento deve ser emitido, referenciando o anterior se necessário. Isso garante auditabilidade e evita manipulações invisíveis.
+
+==== Estrutura básica de um evento
+
+Um evento no Nostr é um objeto JSON com os seguintes campos obrigatórios:
+
+[source,json]
+----
+{
+  "id": "<hash sha256 do evento sem o ID e a assinatura>",
+  "pubkey": "<chave publica do autor>",
+  "created_at": <unix timestamp>,
+  "kind": <número inteiro do tipo do evento>,
+  "tags": [["<tipo>", "<valor>", ...]],
+  "content": "<texto ou dados do evento>",
+  "sig": "<assinatura da estrutura acima>"
+}
+----
+
+Vamos entender o que cada campo significa:
+
+- `id`: hash SHA-256 gerado a partir do conteúdo do evento (sem a assinatura).
+- `pubkey`: chave pública do autor do evento.
+- `created_at`: unix timestamp indicando data e hora que o evento foi criado.
+- `kind`: tipo do evento. Define seu propósito (ex: para nota pública, para metadados de perfil, mensagem privada, etc.).
+- `tags`: lista de tags para relacionar eventos entre si ou adicionar contexto.
+- `content`: conteúdo textual do evento.
+- `sig`: assinatura do evento com a chave privada do autor.
+
+==== Tipos de eventos (`kind`)
+
+O campo `kind` é usado para identificar o tipo de evento. Alguns exemplos comuns:
+
+- `0`: metadados do usuário (nome, imagem, descrição, etc.)
+- `1`: nota de texto (posts ou mensagens públicas)
+- `3`: lista de contatos
+- `4`: mensagem privada (conteúdo criptografado NIP-4)
+- `5`: solicitação de exclusão de evento
+- `6`: repostar nota (como um “compartilhar”)
+- `7`: reação (como um “like”)
+
+Além disso, o ecossistema define novos tipos de evento por meio das NIPs (propostas de extensão). Isso permite que o protocolo evolua sem precisar de atualizações centralizadas.
+
+==== Assinatura e verificação
+
+Antes de um evento ser transmitido, ele é assinado com a chave privada do autor. Os relays e clientes verificam a validade da assinatura usando a chave pública (`pubkey`). Isso garante que:
+
+- O autor do evento é quem diz ser.
+- O conteúdo não foi alterado depois da assinatura.
+
+Esse processo de assinatura e verificação é fundamental para a confiança no Nostr — e dispensa qualquer servidor de autenticação.
+
+==== O papel das tags
+
+O campo `tags` é uma lista de listas. Cada tag adiciona metadados ao evento. Por exemplo:
+
+[source,json]
+----
+"tags": [
+  ["e", "id de outro evento", "relay_url"],
+  ["p", "chave pública de alguem"],
+  ["d", "identificador customizado"],
+  ["r", "https://example.com/products?category=books&id=123"],
+  ["t", "nostr"]
+]
+----
+
+Tags comuns:
+
+- `["e", "..."]`: referência a outro evento (por exemplo, para respostas ou threads).
+- `["p", "..."]`: menção a outro usuário (por exemplo, em mensagens diretas).
+- `["d", "..."]`: identificador customizado de referência.
+- `["r", "..."]`: referência a um recurso externo (como uma URL).
+- `["t", "..."]`: tópicos ou hashtags.
+
+As tags permitem que eventos sejam relacionados e organizados de forma eficiente, sem depender de esquemas de dados rígidos.
+
+A estrutura de eventos no Nostr é poderosa em sua simplicidade. Com poucos campos e uma assinatura criptográfica, ela permite a construção de funcionalidades complexas e seguras — sempre mantendo a transparência, a portabilidade e a soberania do usuário como princípios centrais.
+
+<<<

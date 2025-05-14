@@ -1,0 +1,141 @@
+=== Publicando seu primeiro evento
+
+Uma das melhores formas de aprender como o Nostr funciona é publicar um evento manualmente. 
+Nesta seção, vamos criar uma par de chaves e um evento simples (uma nota de texto) e enviá-lo para um relay.
+
+==== Dependências necessárias
+
+Antes de começar, você precisa ter o *Node.js* e o *npm* instalados no seu sistema. Eles são essenciais para executar os scripts JavaScript apresentados aqui.
+
+===== 1. Instalando o Node.js
+
+Você pode baixar e instalar o Node.js a partir do site oficial:
+
+https://nodejs.org
+
+A instalação do Node.js já inclui o *npm* (Node Package Manager), que é usado para instalar bibliotecas JavaScript.
+
+Para verificar se tudo está instalado corretamente, execute os seguintes comandos no terminal:
+
+[source, bash]
+----
+node -v
+npm -v
+----
+
+Eles devem exibir as versões instaladas do Node.js e do npm, respectivamente.
+
+===== 2. Instalando as bibliotecas necessárias
+
+Com o ambiente configurado, crie uma nova pasta para o projeto e inicialize o `package.json`:
+
+[source, bash]
+----
+mkdir meu-primeiro-evento-nostr
+cd meu-primeiro-evento-nostr
+npm init -y
+----
+
+Agora instale as bibliotecas usadas nos scripts:
+
+[source, bash]
+----
+npm install nostr-tools
+----
+
+===== 3. O que estamos instalando?
+
+* `nostr-tools`: Esta biblioteca nos ajudará a gerar chaves, assinar eventos, se conectar a relays via WebSocket e outras coisas mais.
+
+Com essa biblioteca instalada, você estará pronto para publicar seu primeiro evento em um relay Nostr.
+
+No trecho de código abaixo incluimos a funções da biblioteca `nostr-tools` para trabalhar com o protocolo Nostr de forma segura e funcional. A função `generateSecretKey` cria uma chave privada, enquanto `getPublicKey` deriva a chave pública correspondente. Já `finalizeEvent` assina eventos com a chave privada, garantindo autenticidade.
+
+[source,js]
+----
+import { generateSecretKey, getPublicKey, finalizeEvent } from 'nostr-tools/pure'
+import { Relay } from 'nostr-tools/relay'
+import { bytesToHex, hexToBytes } from '@noble/hashes/utils'
+----
+
+A classe `Relay` permite conectar a servidores Nostr (relays) para enviar e receber eventos. A função `bytesToHex` e `hexToBytes`, da biblioteca `@noble/hashes/utils` (a biblioteca @noble vem juntamente instalada com nostr-tools), facilitam a conversão entre formatos binário e hexadecimal, comuns em operações criptográficas. Com essas ferramentas, é possível criar e publicar eventos de forma descentralizada e confiável.
+
+==== Gerando suas chaves
+
+Para começar, você precisa de um par de chaves: uma chave privada e uma chave pública.
+
+Você pode gerar essas chaves com bibliotecas como `nostr-tools` (JavaScript), `rust-nostr` (Rust), ou até mesmo com ferramentas online — embora, para fins de segurança, seja altamente recomendável gerar suas chaves localmente.
+
+[source,js]
+----
+include::scripts/generatingKeys.js[]
+----
+
+==== Criando um evento
+
+Agora que você entendeu como gerar suas chaves, podemos montar o corpo de um evento `kind: 1` e assiná-lo com a chave privada.
+
+[source,js]
+----
+include::scripts/creatingEvent.js[]
+----
+
+Esse objeto `event` agora está pronto para ser enviado. Ele contém o tipo de evento, o unix timestamp, o conteúdo, a chave pública e uma assinatura válida com a chave privada.
+
+==== Conectando-se a um relay
+
+Relays usam WebSockets. Você pode se conectar e publicar seu evento assim:
+
+[source,js]
+----
+include::scripts/publishEvent.js[]
+----
+
+Você verá seu evento sendo transmitido com sucesso se tudo estiver correto. Pode também receber respostas de confirmação, dependendo do relay.
+
+==== Código completo
+
+Utilize o código a seguir para criar o arquivo `publishingEvent.js`
+
+[source,js]
+----
+include::scripts/bundle.js[]
+----
+
+Rode o arquivo usando Node.js:
+
+[source, bash]
+----
+node publishingEvent.js 
+----
+
+Veja a saída será algo similar:
+
+[source,console]
+----
+Chave privada: daff342084ab433b55590402361dae273fc629a38bdd2eb2ff4a3389abd8cb65
+Chave pública: 189173df59bcf9a34902ebdf75a1f42205c27d37d5b6f295689a3a3f9794a55e
+
+Evento publicado! {
+  kind: 1,
+  created_at: 1747180986,
+  tags: [],
+  content: 'Olá, mundo Nostr!',
+  pubkey: 'fcd06203f65d0fbd9d2f24dce3a66325d6c9e9165b9f7716790eaf3425826c8e',
+  id: 'f97dad9d5382c7c80cad911ec9ae420d3a5235a0bbb03ffd7bc44bb3816ae3f9',
+  sig: '1185e75350167ce7d4107a4f6bbf7322ccb799e84b814e3ef39f0b2c1a5c0b1946603100fb0c3e0900deb031a101711088ce8e7b77441b2ebd8fc2fd953adb6e',
+  [Symbol(verified)]: true
+}
+----
+
+==== Observando o resultado
+
+Você pode verificar se o evento foi publicado com sucesso usando uma ferramenta ou cliente conectado ao mesmo relay, como:
+
+- https://njump.me/
+
+Basta colar seu `id` ou `pubkey` a frente do link do site njump para ver se seu evento apareceu.
+
+Com isso, você publicou seu primeiro evento no Nostr de forma programática. Essa é a base de todo o funcionamento do protocolo — e a partir disso, você pode construir clientes, bots, aplicativos móveis ou o que imaginar.
+
+<<<
