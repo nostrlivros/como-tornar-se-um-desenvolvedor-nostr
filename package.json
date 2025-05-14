@@ -2,6 +2,7 @@
   "name": "como-tornar-se-um-desenvolver-nostr",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
     "build": "asciidoctor-pdf -a pdf-theme=theme.yml index.adoc",
     "watch": "./watch.sh"
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/nostrlivros/como-tornar-se-um-desenvolver-nostr/issues"
   },
-  "homepage": "https://github.com/nostrlivros/como-tornar-se-um-desenvolver-nostr#readme"
+  "homepage": "https://github.com/nostrlivros/como-tornar-se-um-desenvolver-nostr#readme",
+  "dependencies": {
+    "nostr-tools": "^2.12.0"
+  }
 }
