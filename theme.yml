@@ -1,0 +1,13 @@
+extends: default
+
+title-page:
+  background-color: #faf7f2
+  color: #fff
+  text-align: center
+  title:
+    background-color: #f00
+    top: 0
+    font-size: 35
+    font-color: #000
+  authors:
+    
