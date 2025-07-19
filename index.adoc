@@ -1,4 +1,4 @@
-:t: Como tornar-se um Desenvolver Nostr
+:t: Como tornar-se um Desenvolvedor Nostr
 = {t}
 //:title-page: {t}
 :doctype: book
