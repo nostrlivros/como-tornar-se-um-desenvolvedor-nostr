@@ -1,4 +1,4 @@
-=== Eventos e estrutura de Mensagens
+=== Estrutura de eventos (NIP-01)
 
 ==== O que são eventos?
 
