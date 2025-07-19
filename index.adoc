@@ -1,0 +1,32 @@
+:t: Como tornar-se um Desenvolver Nostr
+= {t}
+//:title-page: {t}
+:doctype: book
+:source-highlighter: rouge
+:toc:
+:toc-title: Sumário
+:author: Anderson Juhasc
+:lang: pt-br
+//:front-cover-image: image:./images/cover.png[]
+//:page-background-image: image:./images/cover.png[]
+:title-page-background-image: image:./images/cover.png[]
+
+<<<
+
+[.epigraph]
+____
+"Tudo que você fizer será insignificante, mas é muito importante que você faça."
+
+— Mahatma Gandhi
+____
+
+
+= Introdução
+
+include::chapter-01/index.adoc[]
+include::chapter-02/index.adoc[]
+
+
+= Parte 1: Fundamentos do Nostr
+
+include::chapter-03/index.adoc[]
