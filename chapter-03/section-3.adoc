@@ -33,7 +33,8 @@ Com o ambiente configurado, crie uma nova pasta para o projeto e inicialize o `p
 ----
 mkdir meu-primeiro-evento-nostr
 cd meu-primeiro-evento-nostr
-npm init -y
+npm init -y 
+npm pkg set type="module"
 ----
 
 Agora instale as bibliotecas usadas nos scripts:
@@ -135,6 +136,13 @@ Você pode verificar se o evento foi publicado com sucesso usando uma ferramenta
 - https://njump.me/
 
 Basta colar seu `id` ou `pubkey` a frente do link do site njump para ver se seu evento apareceu.
+
+Ou você também pode passar sua `id` para pegar o evento publicado usando o código abaixo:
+
+[source,js]
+----
+include::scripts/getEvents.js[]
+----
 
 Com isso, você publicou seu primeiro evento no Nostr de forma programática. Essa é a base de todo o funcionamento do protocolo — e a partir disso, você pode construir clientes, bots, aplicativos móveis ou o que imaginar.
 
